@@ -1,0 +1,11 @@
+<div *ngIf="isDataLoaded">
+<p>{{category}}</p>
+<ion-list lines="none">
+  <ion-item  *ngFor="let drink of drinksFromCertainCategory">
+    <ion-thumbnail slot="start">
+      <ion-img [src]="drink.strDrinkThumb"></ion-img>
+    </ion-thumbnail>
+    <ion-text>{{drink.strDrink}}</ion-text>
+  </ion-item>
+</ion-list>
+</div>
