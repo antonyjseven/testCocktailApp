@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-  },
+  // {
+  //   //   path: 'home',
+  //   //   loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+  //   // },
   {
     path: '',
     redirectTo: 'cocktail-db',
@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'cocktail-db',
     loadChildren: () => import('./cocktail-db/cocktail-db.module').then(m => m.CocktailDBPageModule)
+  },
+  {
+    path: 'filter',
+    loadChildren: () => import('./cocktail-db/filters/filters.module').then(m => m.FiltersPageModule)
   },
 
 ];

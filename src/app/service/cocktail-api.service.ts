@@ -1,31 +1,44 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CocktailApiService {
-  checkbox = [
-    {id: '1', val: 'Ordinary Drink', isChecked: true },
-    {id: '2', val: 'Cocktail', isChecked: true },
-    {id: '3', val: 'Milk/Float/Shake', isChecked: true },
-    {id: '4', val: 'Other/Unknown', isChecked: true },
-    {id: '5', val: 'Cocoa', isChecked: true },
-    {id: '6', val: 'Shot', isChecked: true },
-    {id: '7', val: 'Coffee/Tea', isChecked: true },
-    {id: '8', val: 'Homemade Liqueur', isChecked: true },
-    {id: '9', val: 'Beer', isChecked: true },
-  ];
+
+  private filtersSubject = new BehaviorSubject({
+    'Ordinary Drink': false,
+    Cocktail: true,
+    Cocoa: true,
+    Beer: false,
+  });
+
+  state = {
+    'Ordinary Drink': false,
+    Cocktail: true,
+    Cocoa: true,
+    Beer: false,
+  };
+
+  copyState = {
+    ...this.state,
+  };
+
   constructor(private http: HttpClient) { }
-  getCocktail(drink){
+  getCocktail(drink: string) {
     return this.http.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drink}`);
   }
-  unChecked(id: string){
-    // find for id
-    if (id === this.checkbox[id]){
-      // toggle isChecked
-      // this.form.isChecked: !true
-    }
+
+  getState() {
+    return this.state;
+  }
+
+  toggle(value: string) {
+    this.copyState[value] = !this.copyState[value];
+  }
+
+  save() {
+    this.state = {...this.copyState};
   }
 }

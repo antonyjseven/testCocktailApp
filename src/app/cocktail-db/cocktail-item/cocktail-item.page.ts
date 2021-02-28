@@ -10,6 +10,7 @@ export class CocktailItemPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

@@ -11,12 +11,16 @@ export class FiltersPage implements OnInit {
   constructor(private service: CocktailApiService) { }
   ngOnInit() {
   }
-  unChecked(id){
+  toggleCheckbox(id){
     console.log(id);
-    this.service.unChecked(id);
+    this.service.toggle(id);
+  }
+
+  saveChanges() {
+    this.service.save();
   }
   ionViewDidEnter() {
-    this.checkbox = this.service.checkbox;
+    this.checkbox = this.service.copyState;
   }
 
 }

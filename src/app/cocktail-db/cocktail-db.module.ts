@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CocktailDBPageRoutingModule } from './cocktail-db-routing.module';
 
 import { CocktailDBPage } from './cocktail-db.page';
+import {CoctailListComponent} from './coctail-list/coctail-list.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { CocktailDBPage } from './cocktail-db.page';
     IonicModule,
     CocktailDBPageRoutingModule
   ],
-  declarations: [CocktailDBPage]
+  declarations: [CocktailDBPage, CoctailListComponent]
 })
 export class CocktailDBPageModule {}
